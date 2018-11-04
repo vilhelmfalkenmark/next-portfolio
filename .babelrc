@@ -6,7 +6,10 @@
       {
         "root": ["./"],
         "alias": {
-          "components": "./src/components"
+          "components": "./src/components",
+          "hocs": "./src/hocs",
+          "store": "./src/store",
+          "styles": "./src/styles"
         }
       }
     ]
