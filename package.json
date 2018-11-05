@@ -26,6 +26,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "build": "next build",
-    "start": "next start -p"
+    "start": "NODE_ENV=production node server/index.js",
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
   }
 }
