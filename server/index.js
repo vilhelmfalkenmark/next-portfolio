@@ -1,15 +1,42 @@
-const { createServer } = require('http');
+const express = require('express');
 const next = require('next');
-const routes = require('../routes');
-
-const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handler = routes.getRequestHandler(app);
+const handle = app.getRequestHandler();
+const PORT = process.env.PORT || 3000;
 
-app.prepare().then(() => {
-  createServer(handler).listen(port, err => {
-    if (err) throw err;
-    console.log(`> Ready on http://localhost:${port}`);
+app
+  .prepare()
+  .then(() => {
+    const server = express();
+    /**
+     * API SETUP
+     */
+    server.use('/api', require('./api')());
+
+    /**
+     * CUSTOM ROUTING
+     */
+    server.get('/', (req, res) => {
+      const queryParams = { title: req.params.id };
+      app.render(req, res, '/StartPage', queryParams);
+    });
+
+    server.get('/projekt', (req, res) => {
+      const queryParams = { title: req.params.id };
+      app.render(req, res, '/ProjectsPage', queryParams);
+    });
+
+    server.get('*', (req, res) => {
+      return handle(req, res);
+    });
+
+    server.listen(PORT, err => {
+      if (err) throw err;
+      console.log('> Ready on http://localhost:3000');
+    });
+  })
+  .catch(ex => {
+    console.error(ex.stack);
+    process.exit(1);
   });
-});

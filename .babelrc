@@ -9,7 +9,9 @@
           "components": "./src/components",
           "hocs": "./src/hocs",
           "store": "./src/store",
-          "styles": "./src/styles"
+          "styles": "./src/styles",
+          "routes": "./routes",
+          "api": "./server/api"
         }
       }
     ]
