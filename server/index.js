@@ -1,5 +1,8 @@
-const express = require('express');
-const next = require('next');
+import express from 'express';
+import next from 'next';
+
+import api from 'api';
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -12,7 +15,7 @@ app
     /**
      * API SETUP
      */
-    server.use('/api', require('./api')());
+    server.use('/api', api());
 
     /**
      * CUSTOM ROUTING

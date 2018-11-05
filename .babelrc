@@ -11,7 +11,8 @@
           "store": "./src/store",
           "styles": "./src/styles",
           "routes": "./routes",
-          "api": "./server/api"
+          "api": "./server/api",
+          "utils": "./utils"
         }
       }
     ]

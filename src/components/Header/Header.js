@@ -1,7 +1,6 @@
 import { Link } from 'routes';
 import classNames from 'classnames/bind';
 import styles from './Header.scss';
-import Router from 'next/router';
 
 const s = classNames.bind(styles);
 
