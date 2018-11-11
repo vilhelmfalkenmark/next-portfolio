@@ -7,16 +7,12 @@ import styles from './StartPage.scss';
 const s = classNames.bind(styles);
 
 class StartPage extends React.Component {
-  // static getInitialProps ({ reduxStore, req }) {
-  //   const isServer = !!req
-  //   reduxStore.dispatch(serverRenderClock(isServer))
-
-  //   return {}
-  // }
+  static getInitialProps({ reduxStore, req }) {
+    return {};
+  }
 
   componentDidMount() {
     const { dispatch } = this.props;
-    // this.timer = startClock(dispatch)
   }
 
   render() {

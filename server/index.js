@@ -25,6 +25,12 @@ app
       app.render(req, res, '/StartPage', queryParams);
     });
 
+    server.get('/projekt/:slug/', (req, res) => {
+      console.log('Mot /projekt/:slug/');
+      const queryParams = { title: req.params.id };
+      app.render(req, res, '/ProjectDetailsPage', queryParams);
+    });
+
     server.get('/projekt', (req, res) => {
       const queryParams = { title: req.params.id };
       app.render(req, res, '/ProjectsPage', queryParams);

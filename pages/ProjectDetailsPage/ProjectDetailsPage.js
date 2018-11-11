@@ -2,39 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import EntryPoint from 'hocs/EntryPoint';
-import Project from 'components/Project';
 import { fetchProjects } from 'store/projects/actions';
 
-import styles from './ProjectsPage.scss';
+import styles from './ProjectDetailsPage.scss';
 
 const s = classNames.bind(styles);
 
-class ProjectsPage extends React.Component {
+class ProjectDetailsPage extends React.Component {
   static async getInitialProps({ reduxStore }) {
-    return reduxStore.dispatch(fetchProjects(true));
+    return {};
   }
 
   getMarkup() {
-    const { projects } = this.props;
-
-    if (projects.projectsFulfilled && projects.data.length > 0) {
-      return (
-        <ul className={s({ list: true })}>
-          {projects.data.map((project, index) => (
-            <Project key={index} project={project} />
-          ))}
-        </ul>
-      );
-    } else if (projects.projectsRejected) {
-      return <p>Error!</p>;
-    }
-    return <p>Laddar data!</p>;
+    return null;
   }
 
   render() {
     return (
       <main className={s({ container: true })}>
-        <h1 className={s('heading')}>Alla projekt</h1>
+        <h1 className={s('heading')}>Projektdetaljer!</h1>
         {this.getMarkup()}
       </main>
     );
@@ -55,5 +41,5 @@ export default EntryPoint(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProjectsPage)
+  )(ProjectDetailsPage)
 );

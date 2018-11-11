@@ -30,9 +30,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "nodemon server/babel.js",
+    "dev": "node server/babel.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server/index.js",
+    "start": "NODE_ENV=production node server/babel.js",
     "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
   }
 }

@@ -1,3 +1,5 @@
+@import '~styles/mixins';
+
 .container {
-  background: brown;
+  @include entrypoint;
 }
