@@ -21,7 +21,11 @@ class ProjectsPage extends React.Component {
       return (
         <ul className={s({ list: true })}>
           {projects.data.map((project, index) => (
-            <Project key={index} project={project} />
+            <Project
+              key={project.id}
+              project={project}
+              even={index % 2 === 0}
+            />
           ))}
         </ul>
       );

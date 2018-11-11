@@ -23,9 +23,12 @@
 .picture {
   display: block;
   width: 100%;
-  margin: 0 auto;
   max-width: 400px;
   position: relative;
+
+  &_even {
+    margin-left: auto;
+  }
 }
 
 .macbook {

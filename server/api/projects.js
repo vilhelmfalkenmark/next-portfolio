@@ -1,5 +1,6 @@
 import express from 'express';
 import promiseResolve from 'utils/helpers/promises';
+import { projectsApiResponse } from 'utils/selectors/projects';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ export default contentful => {
         .getEntries({
           content_type: 'projects'
         })
-        .then(entry => entry.items.map(item => item.fields))
+        .then(entry => projectsApiResponse(entry))
         .catch(err => {
           console.error(err);
           return 'Kunde inte hämta projects från contentful';
