@@ -26,13 +26,12 @@ app
     });
 
     server.get('/projekt/:slug/', (req, res) => {
-      const queryParams = { title: req.params.id };
+      const queryParams = { id: req.params.id, slug: req.params.slug };
       app.render(req, res, '/ProjectDetailsPage', queryParams);
     });
 
     server.get('/projekt', (req, res) => {
-      const queryParams = { title: req.params.id };
-      app.render(req, res, '/ProjectsPage', queryParams);
+      app.render(req, res, '/ProjectsPage');
     });
 
     server.get('*', (req, res) => {

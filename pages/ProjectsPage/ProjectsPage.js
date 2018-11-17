@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import EntryPoint from 'hocs/EntryPoint';
 import Project from 'components/Project';
-import { fetchProjects } from 'store/projects/actions';
+import { fetchProjects } from 'store/projects/projectsActions';
 
 import styles from './ProjectsPage.scss';
 

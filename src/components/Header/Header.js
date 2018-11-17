@@ -34,11 +34,7 @@ const Header = () => (
             className={s({
               item: true
             })}
-          >
-            <Link route="/projekt/kombispel">
-              <a className={s({ link: true })}>Kombispel</a>
-            </Link>
-          </li>
+          />
         </ul>
       </nav>
     </div>

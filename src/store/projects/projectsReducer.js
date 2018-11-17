@@ -2,20 +2,20 @@ import {
   PROJECTS_FETCHING,
   PROJECTS_FULFILLED,
   PROJECTS_REJECTED,
-  PROJECT_DETAILS_FETCHING,
-  PROJECT_DETAILS_FULFILLED,
-  PROJECT_DETAILS_REJECTED
-} from "store/actionTypes";
+  PROJECT_BY_ID_FETCHING,
+  PROJECT_BY_ID_FULFILLED,
+  PROJECT_BY_ID_REJECTED
+} from 'store/actionTypes';
 
 const iS = {
   projectsFulfilled: false,
   projectsFetching: false,
   projectsRejected: false,
   pageNotFound: false,
-  projectDetailsFulfilled: false,
-  projectDetailsFetching: false,
-  projectDetailsRejected: false,
-  detailData: {},
+  projectByIdFulfilled: false,
+  projectByIdFetching: false,
+  projectByIdRejected: false,
+  projectById: {},
   data: []
 };
 
@@ -26,15 +26,13 @@ const projects = (state = iS, action) => {
      */
     case PROJECTS_FETCHING: {
       return Object.assign({}, state, {
-        projectsFetching: true,
-        pageNotFound: false
+        projectsFetching: true
       });
     }
     case PROJECTS_FULFILLED: {
       return Object.assign({}, state, {
         projectsFulfilled: true,
         projectsFetching: false,
-        pageNotFound: false,
         data: action.payload
       });
     }
@@ -42,34 +40,30 @@ const projects = (state = iS, action) => {
       return Object.assign({}, state, {
         projectsFulfilled: false,
         projectsFetching: false,
-        pageNotFound: true,
         projectsRejected: true
       });
     }
     /**
      * SINGLE PROJECT
      */
-    case PROJECT_DETAILS_FETCHING: {
+    case PROJECT_BY_ID_FETCHING: {
       return Object.assign({}, state, {
-        projectDetailsFetching: true,
-        pageNotFound: false
+        projectByIdFetching: true
       });
     }
-    case PROJECT_DETAILS_FULFILLED: {
+    case PROJECT_BY_ID_FULFILLED: {
       return Object.assign({}, state, {
-        projectDetailsFulfilled: true,
-        projectDetailsFetching: false,
-        projectDetailsRejected: false,
-        pageNotFound: false,
-        detailData: action.payload
+        projectByIdFulfilled: true,
+        projectByIdFetching: false,
+        projectByIdRejected: false,
+        projectById: action.payload
       });
     }
-    case PROJECT_DETAILS_REJECTED: {
+    case PROJECT_BY_ID_REJECTED: {
       return Object.assign({}, state, {
-        projectDetailsFulfilled: false,
-        projectDetailsFetching: false,
-        pageNotFound: true,
-        projectDetailsRejected: true
+        projectByIdFulfilled: false,
+        projectByIdFetching: false,
+        projectByIdRejected: true
       });
     }
     default:

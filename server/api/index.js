@@ -26,7 +26,7 @@ export default () => {
   router.get('/', (req, res) => {
     res.json({ message: 'Välkommen till mitt Portfolio API' });
   });
-  router.use('/projects/', projects(contentfulClient));
+  router.use('/projekt', projects(contentfulClient));
 
   return router;
 };

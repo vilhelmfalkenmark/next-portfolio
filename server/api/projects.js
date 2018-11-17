@@ -1,6 +1,9 @@
 import express from 'express';
 import promiseResolve from 'utils/helpers/promises';
-import { projectsApiResponse } from 'utils/selectors/projects';
+import {
+  projectsApiResponse,
+  projectByIdApiResponse
+} from 'utils/selectors/projects';
 
 const router = express.Router();
 
@@ -15,6 +18,7 @@ export default contentful => {
         .getEntries({
           content_type: 'projects'
         })
+        .then(entry => entry)
         .then(entry => projectsApiResponse(entry))
         .catch(err => {
           console.error(err);
@@ -35,15 +39,9 @@ export default contentful => {
   // GET REQUEST FOR SINGLE PROJECT
   //////////////////////////////////////////
   router.route('/:slug').get((req, res) => {
-    const urlWithoutSlash = req.url.replace(/\//g, ''); // /kombispel/ --> kombispel
     const projects = contentful
-      .getEntries({
-        content_type: 'projects'
-      })
-      .then(entry => entry.items.map(item => item.fields))
-      .then(projects =>
-        projects.filter(project => project.slug === urlWithoutSlash).pop()
-      )
+      .getEntry(req.query.id)
+      .then(entry => projectByIdApiResponse(entry))
       .catch(err => {
         console.error(err);
         return `Kunde inte hämta ${req.url} från contentful`;

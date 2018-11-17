@@ -2,15 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import EntryPoint from 'hocs/EntryPoint';
-import { fetchProjects } from 'store/projects/actions';
+import { path, is, isEmpty } from 'ramda';
+import {
+  fetchProjectById,
+  projectByIdAlreadyInStore
+} from 'store/projects/projectsActions';
 
 import styles from './ProjectDetailsPage.scss';
 
 const s = classNames.bind(styles);
 
 class ProjectDetailsPage extends React.Component {
-  static async getInitialProps({ reduxStore }) {
-    return {};
+  static async getInitialProps({ reduxStore, query, req }) {
+    const projectsInStore = path(['projects', 'data'], reduxStore.getState());
+    if (is(Array, projectsInStore) && !isEmpty(projectsInStore)) {
+      let i = 0;
+      while (i < projectsInStore.length) {
+        if (projectsInStore[i].id === query.id) {
+          return reduxStore.dispatch(
+            projectByIdAlreadyInStore(projectsInStore[i])
+          );
+        }
+        i++;
+      }
+    }
+    return reduxStore.dispatch(fetchProjectById(req.url));
   }
 
   getMarkup() {
@@ -31,15 +47,4 @@ const mapStateToProps = state => ({
   projects: state.projects
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchProjects: () => {
-    dispatch(fetchProjects());
-  }
-});
-
-export default EntryPoint(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProjectDetailsPage)
-);
+export default EntryPoint(connect(mapStateToProps)(ProjectDetailsPage));
