@@ -2,9 +2,12 @@
 
 .container {
   @include entrypoint;
-  @include content;
 }
 
 .heading {
   @include page-heading;
+}
+
+.content {
+  @include content;
 }

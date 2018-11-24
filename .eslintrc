@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    "prettier/react",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["react", "prettier", "import"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true,
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["lib", "playground/stories"]
+      }
+    }
+  },
+  "rules": {
+    "react/prop-types": "warn",
+    "react/forbid-prop-types": "warn",
+    "react/display-name": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/react-in-jsx-scope": 0,
+    "import/no-unresolved": 0
+  }
+}

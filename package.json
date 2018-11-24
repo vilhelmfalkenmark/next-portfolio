@@ -21,9 +21,11 @@
     "next": "^7.0.2",
     "next-routes": "^1.4.2",
     "node-sass": "^4.10.0",
+    "prop-types": "^15.6.2",
     "ramda": "^0.25.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-particles-js": "^2.4.2",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
     "redux-promise-middleware": "^5.1.1",
@@ -33,7 +35,17 @@
     "dev": "node server/babel.js",
     "dev:live": "nodemon server/babel.js",
     "build": "next build",
+    "lint": "eslint .",
     "start": "NODE_ENV=production node server/babel.js",
     "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1"
   }
 }

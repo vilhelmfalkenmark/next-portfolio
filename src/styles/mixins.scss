@@ -73,6 +73,7 @@
 
 @mixin entrypoint() {
   padding-top: $header-mobile-height;
+  flex: 1 0 auto;
 
   @include breakpoint($lg) {
     padding-top: $header-desk-height;

@@ -4,9 +4,10 @@ import WithReduxStore from 'hocs/WithReduxStore';
 import { Provider } from 'react-redux';
 import 'styles/main.scss';
 
-if (typeof window !== 'undefined') {
-  require('lazysizes');
-}
+// if (typeof window !== 'undefined') {
+//   require('lazysizes');
+//   // require('lazysizes/plugins/bgset');
+// }
 
 class PortfolioApp extends App {
   render() {

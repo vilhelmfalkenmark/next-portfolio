@@ -1,5 +1,32 @@
 @import '~styles/mixins';
+@import '~styles/mixins';
 
 .container {
   @include entrypoint;
+}
+
+.hero {
+  width: 100%;
+  height: calc(100vh - #{$four-base-size});
+  position: relative;
+}
+
+.name {
+  @include absolute-center;
+
+  z-index: $z-index-second;
+  color: $light-grey;
+}
+
+.particles {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #de6262;
+  background: linear-gradient(270deg, #2f2424, #332c27);
+  background-size: cover;
+  background-repeat: no-repeat;
 }

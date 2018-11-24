@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import EntryPoint from 'hocs/EntryPoint';
 import { path, is, isEmpty } from 'ramda';
 import {
   fetchProjectById,
   projectByIdAlreadyInStore
 } from 'store/projects/projectsActions';
+import Hero from 'components/Hero';
+import { getLazyImages } from 'utils/selectors/images';
 
 import styles from './ProjectDetailsPage.scss';
 
@@ -34,10 +37,29 @@ class ProjectDetailsPage extends React.Component {
   }
 
   render() {
+    const { projects } = this.props;
+
     return (
       <main className={s({ container: true })}>
-        <h1 className={s('heading')}>Projektdetaljer!</h1>
-        {this.getMarkup()}
+        <Hero
+          imageData={{
+            lazyImages: getLazyImages({
+              imageUrl: projects.projectById.imageUrl,
+              imageSizes: {
+                defaultParams: { w: '2000' },
+                responsiveSizes: [
+                  { viewPort: '480px', imageParams: { w: '480' } },
+                  { viewPort: '768px', imageParams: { w: '768' } },
+                  { viewPort: '1000px', imageParams: { w: '1000' } }
+                ],
+                maxWidth: true
+              }
+            })
+          }}
+        />
+        <article className={s('content')}>
+          <p>{projects.projectById.content}</p>
+        </article>
       </main>
     );
   }
@@ -46,5 +68,9 @@ class ProjectDetailsPage extends React.Component {
 const mapStateToProps = state => ({
   projects: state.projects
 });
+
+ProjectDetailsPage.propTypes = {
+  projects: PropTypes.shape({})
+};
 
 export default EntryPoint(connect(mapStateToProps)(ProjectDetailsPage));
