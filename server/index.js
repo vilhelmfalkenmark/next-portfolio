@@ -1,10 +1,9 @@
 import express from 'express';
 import next from 'next';
-
 import api from 'api';
+import { environmentIsDev } from 'utils/constants/environmentVariables';
 
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+const app = next({ dev: environmentIsDev });
 const handle = app.getRequestHandler();
 const PORT = process.env.PORT || 3000;
 
@@ -40,10 +39,10 @@ app
 
     server.listen(PORT, err => {
       if (err) throw err;
-      console.log('> Ready on http://localhost:3000');
+      console.log('> Ready on http://localhost:3000'); // eslint-disable-line
     });
   })
   .catch(ex => {
-    console.error(ex.stack);
+    console.error(ex.stack); // eslint-disable-line
     process.exit(1);
   });

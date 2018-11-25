@@ -26,6 +26,8 @@ $transparent-white: rgba(255, 255, 255, 0.808);
 /* Component and application colors */
 $app-background: #fff;
 $link-color: $turquoise;
+$button-primary-color: $turquoise;
+$button-secondary-color: $green;
 
 /* Default sizes */
 $half-base-size: 1rem;
@@ -33,6 +35,8 @@ $base-size: 2rem; // 10px
 $two-base-size: calc(#{$base-size} * 2);
 $three-base-size: calc(#{$base-size} * 3);
 $four-base-size: calc(#{$base-size} * 4);
+$five-base-size: calc(#{$base-size} * 5);
+$six-base-size: calc(#{$base-size} * 6);
 
 /* Layut sizes */
 $header-mobile-height: $three-base-size;
@@ -46,6 +50,7 @@ $z-index-first: 1;
 $z-index-second: 10;
 $z-index-third: 100;
 $z-index-fourth: 200;
+$z-index-fifth: 500;
 
 /* Font sizes */
 $font-size-m: 1.6rem;
@@ -53,3 +58,13 @@ $font-size-l: 1.8rem;
 $font-size-xl: 2.2rem;
 $font-size-xxl: 2.6rem;
 $font-size-xxxl: 3rem;
+
+/* Component sizes */
+$button-s-height: $base-size;
+$button-s-min-width: 180px;
+
+$button-m-height: $two-base-size;
+$button-m-min-width: 230px;
+
+$button-l-height: $three-base-size;
+$button-l-min-width: 280px;

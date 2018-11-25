@@ -156,3 +156,19 @@
   justify-content: center;
   align-items: center;
 }
+
+//////////////////////////////////////////////////
+/**
+* Buttons
+*/
+//////////////////////////////////////////////////
+@mixin buttonColors($backgroundColor, $borderColor, $textColor) {
+  background: $backgroundColor;
+  border-color: $borderColor;
+  color: $textColor;
+
+  .icon {
+    fill: $textColor;
+    stroke: $textColor;
+  }
+}

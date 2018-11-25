@@ -1,5 +1,15 @@
 import React from 'react';
-import { Link } from 'routes';
+import PropTypes from 'prop-types';
+
+import Button from 'components/Button';
+
+import {
+  // BUTTON_COLOR_PRIMARY,
+  BUTTON_COLOR_SECONDARY,
+  BUTTON_SIZE_MEDIUM
+
+  // ICON_ARROW
+} from 'utils/constants/buttonTypes';
 
 import { truncateText } from 'utils/helpers/strings';
 
@@ -13,14 +23,16 @@ const Project = ({ project, even }) => {
     <li className={s('container')}>
       <div className={s('column')}>
         <h4> {project.title}</h4>
-        <p>
-          {truncateText({ maxLength: 300, text: project.content })}
-          <Link route={`/projekt/${project.slug}/?id=${project.id}`}>
-            <a className={s({ inlineLink: true })}>Läs mer</a>
-          </Link>
-        </p>
+        <p>{truncateText({ maxLength: 300, text: project.content })}</p>
+        <Button
+          href={`/projekt/${project.slug}/?id=${project.id}`}
+          color={BUTTON_COLOR_SECONDARY}
+          text={'Läs mer snälla'}
+          outlined
+          size={BUTTON_SIZE_MEDIUM}
+        />
         {project.link && (
-          <a target="_BLANK" href={project.link} rel="noreferrer">
+          <a target="_BLANK" rel="noopener noreferrer" href={project.link}>
             {project.link}
           </a>
         )}
@@ -56,6 +68,11 @@ const Project = ({ project, even }) => {
       </div>
     </li>
   );
+};
+
+Project.propTypes = {
+  project: PropTypes.shape({}),
+  even: PropTypes.bool
 };
 
 export default Project;

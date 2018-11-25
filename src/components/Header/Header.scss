@@ -100,10 +100,10 @@
     justify-content: center;
     height: $header-desk-height;
   }
-}
 
-.isActive {
-  color: $link-color;
+  &_isActive {
+    color: $link-color;
+  }
 }
 
 .linkTitle {
