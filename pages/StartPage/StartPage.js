@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import classNames from 'classnames/bind';
 import EntryPoint from 'hocs/EntryPoint';
-import Particles from 'react-particles-js';
+// import Particles from 'react-particles-js';
 import styles from './StartPage.scss';
 
 const s = classNames.bind(styles);
@@ -17,9 +18,9 @@ class StartPage extends React.Component {
     return (
       <main className={s('container')}>
         <section className={s('hero')}>
-          <h1 className={s('name')}>Vilhelm Falkenmark</h1>
+          <h1 className={s('name')}>Vilhelm Falkenmark!</h1>
           <div className={s('particles')}>
-            <Particles
+            {/* <Particles
               params={{
                 particles: {
                   line_linked: {
@@ -39,7 +40,7 @@ class StartPage extends React.Component {
                 top: 0,
                 left: 0
               }}
-            />
+            /> */}
           </div>
         </section>
       </main>
@@ -47,4 +48,4 @@ class StartPage extends React.Component {
   }
 }
 
-export default connect()(EntryPoint(StartPage));
+export default withRouter(connect()(EntryPoint(StartPage)));

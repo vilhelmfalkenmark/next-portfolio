@@ -1,23 +1,15 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
 
-import rootReducer from 'store/rootReducer';
+import reducer from 'store/rootReducer';
 
-const globalWindow = typeof window !== 'undefined' ? window : {};
-
-const createStoreWithMiddleware = compose(applyMiddleware(promise(), thunk))(
-  createStore
-);
-
-export default function initializeStore(initialState = {}) {
-  if (process.env.NODE_ENV !== 'production') {
-    return createStoreWithMiddleware(
-      rootReducer,
-      initialState,
-      globalWindow.__REDUX_DEVTOOLS_EXTENSION__ &&
-        globalWindow.__REDUX_DEVTOOLS_EXTENSION__()
-    );
-  }
-  return createStoreWithMiddleware(rootReducer, initialState);
+export function initializeStore(initialState = {}) {
+  return createStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
+  );
 }
+
+export default initializeStore;

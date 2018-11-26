@@ -21,7 +21,7 @@ app
      */
     server.get('/', (req, res) => {
       const queryParams = { title: req.params.id };
-      app.render(req, res, '/StartPage', queryParams);
+      app.render(req, res, '/StartPage/StartPage', queryParams);
     });
 
     server.get('/projekt/:slug/', (req, res) => {
