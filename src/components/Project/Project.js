@@ -1,40 +1,42 @@
 import React from 'react';
-import { Link } from 'routes';
-
-import { truncateText } from 'utils/helpers/strings';
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import {
+  BUTTON_COLOR_PRIMARY,
+  BUTTON_SIZE_MEDIUM
+} from 'utils/constants/buttonTypes';
+import { truncateText } from 'utils/helpers/strings';
+import Button from 'components/Button/Button';
 import styles from './Project.scss';
 
 const s = classNames.bind(styles);
 
-const Project = ({ project, even }) => {
+const Project = ({ project, even, openProjectModal }) => {
   return (
     <li className={s('container')}>
-      <div className={s('column')}>
+      {/* INFORMATION COLUMN */}
+      <div
+        className={s('column', {
+          column_info: true
+        })}
+      >
         <h4> {project.title}</h4>
-        <p>
-          {truncateText({ maxLength: 300, text: project.content })}
-          <Link route={`/projekt/${project.slug}/?id=${project.id}`}>
-            <a className={s({ inlineLink: true })}>Läs mer</a>
-          </Link>
-        </p>
-        {project.link && (
-          <a target="_BLANK" href={project.link} rel="noreferrer">
-            {project.link}
-          </a>
-        )}
-        {project.stack && (
-          <ul className={s('stackList')}>
-            {project.stack.map((st, index) => (
-              <li className={s('stackItem')} key={index}>
-                {st.title}
-              </li>
-            ))}
-          </ul>
-        )}
+        <p>{truncateText({ maxLength: 300, text: project.content })}</p>
+        <div className={s('buttonContainer')}>
+          <Button
+            onClickCallback={() => openProjectModal(project)}
+            color={BUTTON_COLOR_PRIMARY}
+            text={'Läs mer'}
+            size={BUTTON_SIZE_MEDIUM}
+          />
+        </div>
       </div>
-      <div className={s('column')}>
+      {/* IMAGE COLUMN */}
+      <div
+        className={s('column', {
+          column_image: true
+        })}
+      >
         <picture
           className={s('picture', {
             picture_even: even
@@ -56,6 +58,12 @@ const Project = ({ project, even }) => {
       </div>
     </li>
   );
+};
+
+Project.propTypes = {
+  project: PropTypes.shape({}),
+  even: PropTypes.bool,
+  openProjectModal: PropTypes.func
 };
 
 export default Project;

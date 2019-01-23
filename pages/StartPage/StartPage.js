@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import classNames from 'classnames/bind';
 import EntryPoint from 'hocs/EntryPoint';
 import Particles from 'react-particles-js';
@@ -47,4 +47,4 @@ class StartPage extends React.Component {
   }
 }
 
-export default connect()(EntryPoint(StartPage));
+export default withRouter(EntryPoint(StartPage));

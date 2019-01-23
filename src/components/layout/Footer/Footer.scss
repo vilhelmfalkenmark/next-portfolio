@@ -1,0 +1,65 @@
+@import '~styles/variables';
+@import '~styles/colors';
+@import '~styles/mixins';
+
+.container {
+  flex-shrink: 0;
+  position: relative;
+  background: $grey1;
+  width: 100%;
+}
+
+.tilt {
+  height: 60px;
+  width: 100%;
+  background-color: $app-background;
+  position: absolute;
+  left: 0;
+  right: 0;
+  fill: $grey1;
+}
+
+.content {
+  @include content;
+
+  margin-top: 60px;
+}
+
+.row {
+  @include flex-row;
+
+  padding: $base-margin 0;
+  @include breakpoint(1px, 767px) {
+    justify-content: center;
+  }
+}
+
+.column {
+  @include breakpoint(1px, 767px) {
+    @include flex-gtr-col(1, $base-margin);
+    max-width: $text-width;
+
+    &_contact {
+      order: 2;
+    }
+
+    &_info {
+      order: 1;
+    }
+  }
+
+  @include flex-gtr-col(2, $base-margin);
+}
+
+/**
+* Image and info
+*/
+
+.image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}

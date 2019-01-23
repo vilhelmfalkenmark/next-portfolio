@@ -1,6 +1,6 @@
 {
   "name": "next-portfolio",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "engines": {
@@ -19,6 +19,7 @@
     "express": "^4.16.4",
     "lazysizes": "^4.1.4",
     "next": "^7.0.2",
+    "next-fonts": "^0.17.0",
     "next-routes": "^1.4.2",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
@@ -46,6 +47,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "redux-devtools-extension": "^2.13.6"
   }
 }

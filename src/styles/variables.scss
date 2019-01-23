@@ -6,46 +6,28 @@ $xl: 1280px;
 $xxl: 1646px;
 $xxxl: 2000px;
 
-// Colors
-$text-grey: #4c4c4c;
-$light-grey: #d4d4d4;
-$medium-grey: #737373;
-$turquoise: #00a6bf;
-$white: #fff;
-$green: #27ae60;
-$red: #e74c3c;
-$orange: #ff9959;
-$off-white: #917070;
-
-/* Shadow */
-$box-shadow: -1px -4px 15px 0 rgba(0, 0, 0, 0.58);
-
-/* Transparent white */
-$transparent-white: rgba(255, 255, 255, 0.808);
-
-/* Component and application colors */
-$app-background: #fff;
-$link-color: $turquoise;
-
 /* Default sizes */
-$half-base-size: 1rem;
-$base-size: 2rem; // 10px
-$two-base-size: calc(#{$base-size} * 2);
-$three-base-size: calc(#{$base-size} * 3);
-$four-base-size: calc(#{$base-size} * 4);
+$half-base-margin: 1rem;
+$base-margin: 2rem; // 10px
+$two-base-margin: calc(#{$base-margin} * 2);
+$three-base-margin: calc(#{$base-margin} * 3);
+$four-base-margin: calc(#{$base-margin} * 4);
+$five-base-margin: calc(#{$base-margin} * 5);
+$six-base-margin: calc(#{$base-margin} * 6);
 
 /* Layut sizes */
-$header-mobile-height: $three-base-size;
-$header-desk-height: $four-base-size;
-$page-max-width: 1024px;
-$max-inner-content: 560px;
+$header-mobile-height: $three-base-margin;
+$header-height: 70px;
+$page-max-width: 1120px;
+$text-width: 560px;
 
 /* z-index */
 $z-index-negative: -1;
-$z-index-first: 1;
-$z-index-second: 10;
-$z-index-third: 100;
-$z-index-fourth: 200;
+$z-index-one: 1;
+$z-index-two: 10;
+$z-index-three: 100;
+$z-index-four: 200;
+$z-index-five: 500;
 
 /* Font sizes */
 $font-size-m: 1.6rem;
@@ -53,3 +35,13 @@ $font-size-l: 1.8rem;
 $font-size-xl: 2.2rem;
 $font-size-xxl: 2.6rem;
 $font-size-xxxl: 3rem;
+
+/* Component sizes */
+$button-s-height: $base-margin;
+$button-s-min-width: 180px;
+
+$button-m-height: $two-base-margin;
+$button-m-min-width: 230px;
+
+$button-l-height: $three-base-margin;
+$button-l-min-width: 280px;

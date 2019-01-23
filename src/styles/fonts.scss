@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'cereal-medium';
+  src: url('/static/fonts/test.eot') format('eot');
+  // src: url('/static/fonts/cereal-medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cereal-book';
+  src: url('/static/fonts/cereal-book.woff2') format('woff2');
+  font-weight: 700;
+  font-style: bold;
+}
+
+$cereal-medium: 'cereal-medium', sans-serif;
+$cereal-book: 'cereal-book', sans-serif;

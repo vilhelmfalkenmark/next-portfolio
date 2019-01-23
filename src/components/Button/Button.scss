@@ -1,0 +1,177 @@
+@import '~styles/variables';
+@import '~styles/colors';
+@import '~styles/mixins';
+
+.container {
+  font-weight: 400;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  border-radius: $five-base-margin;
+  font-size: $two-base-margin;
+  transition: background 140ms ease, border-color 140ms ease;
+  border: 1px solid transparent;
+  font-size: 1.6rem;
+  text-decoration: none;
+  appearance: none;
+  cursor: pointer;
+
+  /**
+	* Sizes
+	*/
+  &_small {
+    padding: $half-base-margin $base-margin;
+    min-height: $button-s-height;
+    min-width: $button-s-min-width;
+  }
+
+  &_medium {
+    padding: 1.5rem $base-margin;
+    min-height: $button-m-height;
+    min-width: $button-m-min-width;
+  }
+
+  &_large {
+    padding: $base-margin $three-base-margin;
+    min-height: $button-l-height;
+    min-width: $button-l-min-width;
+    font-size: 18px;
+  }
+
+  // PRIMARY
+  &_primary_solid {
+    @include buttonColors($button-primary-color, $button-primary-color, $white);
+  }
+
+  &_primary_outlined {
+    @include buttonColors($white, $button-primary-color, $button-primary-color);
+  }
+
+  &_primary {
+    @include breakpoint($lg, 10000px) {
+      &:hover {
+        @include buttonColors(
+          darken($button-primary-color, 5%),
+          darken($button-primary-color, 5%),
+          $white
+        );
+      }
+
+      &:active {
+        @include buttonColors(
+          darken($button-primary-color, 10%),
+          darken($button-primary-color, 10%),
+          $white
+        );
+      }
+    }
+
+    &.container_loading {
+      @include buttonColors($text-grey, $text-grey, $white);
+    }
+  }
+
+  // SECONDARY
+  &_secondary_solid {
+    @include buttonColors(
+      $button-secondary-color,
+      $button-secondary-color,
+      $white
+    );
+  }
+
+  &_secondary_outlined {
+    @include buttonColors(
+      $white,
+      $button-secondary-color,
+      $button-secondary-color
+    );
+  }
+
+  &_secondary {
+    @include breakpoint($lg, 10000px) {
+      &:hover {
+        @include buttonColors(
+          darken($button-secondary-color, 5%),
+          darken($button-secondary-color, 5%),
+          $white
+        );
+      }
+
+      &:active {
+        @include buttonColors(
+          darken($button-secondary-color, 10%),
+          darken($button-secondary-color, 10%),
+          $white
+        );
+      }
+    }
+
+    &.container_loading {
+      @include buttonColors($text-grey, $text-grey, $white);
+    }
+  }
+
+  &_loading {
+    pointer-events: none;
+    position: relative;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+
+  &_iconLeft {
+    flex-direction: row-reverse;
+  }
+}
+
+.textContainer {
+  display: block;
+
+  &_withIconRightAndSubText {
+    margin-right: $two-base-margin;
+  }
+
+  &_withIconLeftAndSubText {
+    margin-left: $two-base-margin;
+  }
+}
+
+.text {
+  display: block;
+}
+
+.icon {
+  margin-left: $base-margin;
+  margin-top: 2px;
+
+  &_small {
+    height: $two-base-margin;
+    width: $two-base-margin;
+  }
+
+  &_medium {
+    height: $two-base-margin;
+    width: $two-base-margin;
+  }
+
+  &_large {
+    height: 20px; // TODO get from ror
+    width: 20px;
+  }
+
+  &_left {
+    margin-left: 0;
+    margin-right: $base-margin;
+  }
+}
+
+.spinner {
+  @include absolute-center;
+
+  z-index: $z-index-five;
+}

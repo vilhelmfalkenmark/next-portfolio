@@ -1,16 +1,17 @@
-import express from 'express';
+import { Router } from 'express';
 import { path } from 'ramda';
-const contentful = require('contentful');
 
-import projects from 'api/projects.js';
-// import experiences from 'api/experiences';
-// import landingPage from 'api/landingpage';
+import projectsResolver from 'api/projects/resolver';
+import experiencesResolver from 'api/experiences/resolver';
+import skillsResolver from 'api/skills/resolver';
+
+const contentful = require('contentful');
 
 const ENVIRONMENT = process.env;
 
 require('dotenv').config();
 
-const router = express.Router();
+const router = Router();
 
 const apiKeys = {
   CONTENTFUL_SPACE: path(['CONTENTFUL_SPACE'], ENVIRONMENT),
@@ -23,10 +24,12 @@ const contentfulClient = contentful.createClient({
 });
 
 export default () => {
-  router.get('/', (req, res) => {
+  router.get('/', (_, res) => {
     res.json({ message: 'Välkommen till mitt Portfolio API' });
   });
-  router.use('/projekt', projects(contentfulClient));
+  router.use('/projects', projectsResolver(contentfulClient));
+  router.use('/experiences', experiencesResolver(contentfulClient));
+  router.use('/skills', skillsResolver(contentfulClient));
 
   return router;
 };
