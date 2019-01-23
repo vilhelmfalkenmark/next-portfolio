@@ -2,9 +2,14 @@
 @import '~styles/mixins';
 
 .container {
-  @include flex-row();
+  @include flex-row;
 
-  margin-bottom: $three-base-size;
+  margin-bottom: $three-base-margin;
+  justify-content: center;
+
+  @include breakpoint(900px) {
+    justify-content: space-between;
+  }
 
   &:nth-of-type(even) {
     flex-direction: row-reverse;
@@ -12,22 +17,48 @@
 }
 
 .column {
-  @include flex-gtr-col(2, $base-size);
+  @include flex-gtr-col(1, $base-margin);
+  max-width: $text-width;
+
+  @include breakpoint(1px, 899px) {
+    &_image {
+      order: 1;
+    }
+
+    &_info {
+      order: 2;
+    }
+  }
+
+  @include breakpoint(900px) {
+    @include flex-gtr-col(2, $base-margin);
+  }
 }
 
 .inlineLink {
-  margin-left: $base-size;
+  margin-left: $base-margin;
   display: inline-block;
 }
 
+//////////////////////////////////////////////////
+/**
+* MACBOOK IMAGE
+*/
+//////////////////////////////////////////////////
 .picture {
   display: block;
   width: 100%;
   max-width: 400px;
   position: relative;
 
-  &_even {
-    margin-left: auto;
+  @include breakpoint(1px, 899px) {
+    margin: 0 auto;
+  }
+
+  @include breakpoint(900px) {
+    &_even {
+      margin-left: auto;
+    }
   }
 }
 
@@ -49,4 +80,14 @@
 
 .link {
   @include absolute-center;
+}
+//////////////////////////////////////////////////
+/**
+* MACBOOK IMAGE
+*/
+//////////////////////////////////////////////////
+.buttonContainer {
+  @include breakpoint(1px, 899px) {
+    text-align: center;
+  }
 }

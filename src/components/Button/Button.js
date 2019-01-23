@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'routes';
+import { Link } from 'router/routes';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import SolidSpinner from 'components/Loading/SolidSpinner';
@@ -10,7 +10,6 @@ import {
   BUTTON_SIZE_SMALL,
   BUTTON_SIZE_MEDIUM,
   BUTTON_SIZE_LARGE
-  // ICON_ARROW
 } from 'utils/constants/buttonTypes';
 
 import styles from './Button.scss';
@@ -19,6 +18,7 @@ const s = classNames.bind(styles);
 
 const Button = ({
   href,
+  internalHref, // <-- Link within the page
   color,
   outlined,
   size,
@@ -97,11 +97,24 @@ const Button = ({
   /**
    * If button is of type link
    */
-  if (href) {
+  if (internalHref) {
     return (
-      <Link route={href}>
+      <Link route={internalHref}>
         <a className={BUTTON_CLASSES}>{getInnerMarkup()}</a>
       </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a
+        className={BUTTON_CLASSES}
+        href={href}
+        target="_BLANK"
+        rel="noopener noreferrer"
+      >
+        {getInnerMarkup()}
+      </a>
     );
   }
   /**
@@ -118,65 +131,26 @@ const Button = ({
 };
 
 Button.propTypes = {
-  /**
-   * Color of button
-   */
   color: PropTypes.oneOf([BUTTON_COLOR_PRIMARY, BUTTON_COLOR_SECONDARY]),
-  /**
-   * If the colors should get inverted.
-   */
   outlined: PropTypes.bool,
-  /**
-   * Size of button
-   */
   size: PropTypes.oneOf([
     BUTTON_SIZE_SMALL,
     BUTTON_SIZE_MEDIUM,
     BUTTON_SIZE_LARGE
   ]).isRequired,
-  /**
-   * The text to be displayed withing the button
-   */
   text: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({}),
     PropTypes.func
   ]),
-  /**
-   * css-class passed from upper scope
-   */
   className: PropTypes.string,
-  /**
-   * css-class passed to the potential icon
-   */
   iconClassName: PropTypes.string,
-  /**
-   * Non css-modules scoped css class used for GTM tracking, Analytic and so on.
-   */
-  trackingClassName: PropTypes.string,
-  /**
-   * The function to be triggered on click
-   */
   onClickCallback: PropTypes.func,
-  /**
-   * The icon to be displayed within button
-   */
   icon: PropTypes.string,
-  /**
-   * If icon should be displayed to the left of the text
-   */
   iconLeft: PropTypes.bool,
-  /**
-   * The react element for handling routing. E.g NavLink from "fluxible-router"
-   */
   InjectedNavLink: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  /**
-   * Where the NavLink click should lead to
-   */
   href: PropTypes.string,
-  /**
-   * Used to display a spinner and will disaple pointer-events
-   */
+  internalHref: PropTypes.string,
   loading: PropTypes.bool
 };
 

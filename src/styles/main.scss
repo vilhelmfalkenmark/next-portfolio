@@ -1,7 +1,8 @@
 @import 'normalize';
 @import 'variables';
+@import 'colors';
 @import 'mixins';
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 *,
 *::after,
@@ -34,20 +35,17 @@ picture {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: $app-background;
-  overflow-x: hidden;
+  overflow: hidden;
   color: $text-grey;
   line-height: 2.6rem;
   font-size: 1.6rem;
   position: relative;
+}
 
-  > div {
-    // The __next div
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+a {
+  text-decoration: none;
 }
 
 ul,
@@ -61,4 +59,24 @@ menu,
 ol {
   padding: 0;
   margin: 0;
+}
+
+/**
+* The :global prefix prevents the css selector
+* from being applied withing a css-modules context
+*/
+:global #__next {
+  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+:global #app {
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }

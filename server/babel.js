@@ -7,11 +7,12 @@ require('@babel/register')({
       {
         root: ['./'],
         alias: {
+          root: "'./'",
           components: './src/components',
           hocs: './src/hocs',
-          store: './src/store',
           styles: './src/styles',
-          routes: './routes',
+          store: './store',
+          router: './router',
           api: './server/api',
           utils: './utils'
         }
@@ -20,4 +21,4 @@ require('@babel/register')({
   ]
 });
 
-require('./index');
+require('./server');

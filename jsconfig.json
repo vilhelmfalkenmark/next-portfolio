@@ -7,7 +7,7 @@
       "utils/*": ["utils/*"],
       "components/*": ["src/components/*"],
       "hocs/*": ["src/hocs/*"],
-      "routes/*": ["routes/*"],
+      "router/*": ["router/*"],
       "api/*": ["server/api/*"]
     }
   },

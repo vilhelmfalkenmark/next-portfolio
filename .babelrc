@@ -1,16 +1,17 @@
 {
-  "presets": ["next/babel", "@babel/preset-env"],
+  "presets": ["next/babel"],
   "plugins": [
     [
       "module-resolver",
       {
-        "root": ["./"],
+        "root": ["."],
         "alias": {
+          "root": "'./'",
           "components": "./src/components",
           "hocs": "./src/hocs",
-          "store": "./src/store",
           "styles": "./src/styles",
-          "routes": "./routes",
+          "store": "./store",
+          "router": "./router",
           "api": "./server/api",
           "utils": "./utils"
         }

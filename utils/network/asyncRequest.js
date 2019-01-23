@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { apiBase } from 'utils/constants/environmentVariables';
 
-const asyncRequest = axios.create({
+export const asyncRequest = axios.create({
   baseURL: apiBase,
   timeout: 10000
 });

@@ -1,0 +1,40 @@
+/**
+* Gray scales
+*/
+$grey1: #ebebf0;
+$grey2: #c3c3c8;
+$grey3: #96969b;
+$grey4: #707075;
+$grey5: #505055;
+$grey6: #323237;
+$grey7: #111111;
+
+// Colors
+$text-grey: #535353;
+$light-grey: #d4d4d4;
+$medium-grey: #737373;
+$turquoise: #00a6bf;
+$white: #fff;
+$green: #27ae60;
+$red: #e74c3c;
+$orange: #ff9959;
+$off-white: #917070;
+
+/* Shadow */
+$box-shadow: -1px -4px 15px 0 rgba(0, 0, 0, 0.58);
+
+/* Transparent white */
+$transparent-white: rgba(255, 255, 255, 0.808);
+
+/* Component and application colors */
+$app-background: white;
+$link-color: $turquoise;
+$button-primary-color: $turquoise;
+$button-secondary-color: $orange;
+
+/**
+* Component colors 
+*/
+$page-side-shadow: 0 -150px 30px rgba(0, 0, 0, 0.1);
+$grey-modal-overlay: rgba(50, 50, 50, 0.8);
+$white-modal-overlay: rgba(255, 255, 255, 0.8);

@@ -14,13 +14,6 @@
     "jest": true,
     "browser": true
   },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["lib", "playground/stories"]
-      }
-    }
-  },
   "rules": {
     "react/prop-types": "warn",
     "react/forbid-prop-types": "warn",

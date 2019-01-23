@@ -1,0 +1,85 @@
+@import '~styles/colors';
+@import '~styles/variables';
+@import '~styles/mixins';
+@import '~styles/keyframes';
+
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: $z-index-two;
+
+  &_isClosed {
+    display: none;
+  }
+}
+
+.closeOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: 0;
+  background: $grey-modal-overlay;
+  z-index: $z-index-two;
+}
+
+.inner {
+  position: relative;
+  text-align: center;
+}
+
+/**
+* The Container for the wrapped Modal
+*/
+.children {
+  position: relative;
+  display: inline-block;
+  text-align: initial;
+  left: 0;
+  right: 0;
+  background: $white;
+  max-width: $page-max-width;
+  margin: calc(#{$two-base-margin} + #{$header-height}) auto $three-base-margin;
+  z-index: $z-index-three;
+  padding: $base-margin;
+
+  @include breakpoint(768px) {
+    padding: $two-base-margin;
+  }
+
+  &_isOpen {
+    animation: modalFadeIn 0.2s;
+  }
+}
+
+.closeButton {
+  appearance: none;
+  z-index: $z-index-one;
+  position: absolute;
+  padding: 0;
+  background: transparent;
+  border: none;
+  top: $base-margin;
+  right: $base-margin;
+  height: $five-base-margin;
+  width: $five-base-margin;
+}
+
+.cross {
+  height: 100%;
+  width: auto;
+  fill: red;
+}

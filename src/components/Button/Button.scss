@@ -1,4 +1,5 @@
 @import '~styles/variables';
+@import '~styles/colors';
 @import '~styles/mixins';
 
 .container {
@@ -6,8 +7,8 @@
   display: inline-block;
   outline: none;
   text-align: center;
-  border-radius: $five-base-size;
-  font-size: $two-base-size;
+  border-radius: $five-base-margin;
+  font-size: $two-base-margin;
   transition: background 140ms ease, border-color 140ms ease;
   border: 1px solid transparent;
   font-size: 1.6rem;
@@ -19,19 +20,19 @@
 	* Sizes
 	*/
   &_small {
-    padding: $half-base-size $base-size;
+    padding: $half-base-margin $base-margin;
     min-height: $button-s-height;
     min-width: $button-s-min-width;
   }
 
   &_medium {
-    padding: 1.5rem $base-size;
+    padding: 1.5rem $base-margin;
     min-height: $button-m-height;
     min-width: $button-m-min-width;
   }
 
   &_large {
-    padding: $base-size $three-base-size;
+    padding: $base-margin $three-base-margin;
     min-height: $button-l-height;
     min-width: $button-l-min-width;
     font-size: 18px;
@@ -132,11 +133,11 @@
   display: block;
 
   &_withIconRightAndSubText {
-    margin-right: $two-base-size;
+    margin-right: $two-base-margin;
   }
 
   &_withIconLeftAndSubText {
-    margin-left: $two-base-size;
+    margin-left: $two-base-margin;
   }
 }
 
@@ -145,17 +146,17 @@
 }
 
 .icon {
-  margin-left: $base-size;
+  margin-left: $base-margin;
   margin-top: 2px;
 
   &_small {
-    height: $two-base-size;
-    width: $two-base-size;
+    height: $two-base-margin;
+    width: $two-base-margin;
   }
 
   &_medium {
-    height: $two-base-size;
-    width: $two-base-size;
+    height: $two-base-margin;
+    width: $two-base-margin;
   }
 
   &_large {
@@ -165,12 +166,12 @@
 
   &_left {
     margin-left: 0;
-    margin-right: $base-size;
+    margin-right: $base-margin;
   }
 }
 
 .spinner {
   @include absolute-center;
 
-  z-index: $z-index-fifth;
+  z-index: $z-index-five;
 }
