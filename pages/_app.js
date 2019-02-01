@@ -3,6 +3,9 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 import React from 'react';
 import WithReduxStore from 'hocs/WithReduxStore';
+import Header from 'components/layout/Header/Header';
+import Footer from 'components/layout/Footer/Footer';
+
 import { Provider } from 'react-redux';
 
 import 'styles/main.scss';
@@ -60,7 +63,11 @@ class PortfolioApp extends App {
           <title>{this.getTitle()}</title>
         </Head>
         <Provider store={reduxStore}>
-          <Component />
+          <div id="app">
+            <Header />
+            <Component />
+            <Footer />
+          </div>
         </Provider>
       </Container>
     );

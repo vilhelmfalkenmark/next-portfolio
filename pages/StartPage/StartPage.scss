@@ -8,15 +8,29 @@
 
 .hero {
   width: 100%;
-  height: calc(100vh - #{$four-base-margin});
+  height: calc(100vh - #{$header-height});
   position: relative;
 }
 
 .name {
-  @include absolute-center;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
 
   z-index: $z-index-two;
   color: $white;
+  font-size: $font-size-xl;
+
+  @include breakpoint($md) {
+    font-size: $font-size-xxl;
+  }
+
+  @include breakpoint($lg) {
+    font-size: $font-size-xxxl;
+  }
 }
 
 .particles {
@@ -27,7 +41,7 @@
   top: 0;
   left: 0;
   background-color: #de6262;
-  background: linear-gradient(270deg, #de6262, #ff9959);
+  background: $gradient-background;
 
   background-size: cover;
   background-repeat: no-repeat;

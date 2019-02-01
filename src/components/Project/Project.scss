@@ -64,18 +64,19 @@
 
 .macbook {
   height: auto;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .portfolioImage {
   position: absolute;
-  top: 15px;
+  top: 6%;
   left: 0;
   right: 0;
   margin: 0 auto;
   height: auto;
-  width: 310px;
-  border-radius: 5px;
+  width: 77%;
+  border-radius: 3px;
 }
 
 .link {

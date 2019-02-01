@@ -7,7 +7,6 @@ import {
   fetchProjects,
   openProjectModal
 } from 'store/projects/projectsActions';
-import EntryPoint from 'hocs/EntryPoint';
 import Project from 'components/Project/Project';
 import ProjectModal from 'components/modals/ProjectModal/ProjectModal';
 import styles from './ProjectsPage.scss';
@@ -80,9 +79,7 @@ ProjectsPage.propTypes = {
   openProjectModal: PropTypes.func
 };
 
-export default EntryPoint(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProjectsPage)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectsPage);

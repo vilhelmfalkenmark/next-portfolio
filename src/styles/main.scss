@@ -2,7 +2,9 @@
 @import 'variables';
 @import 'colors';
 @import 'mixins';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import 'fonts';
+// @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 *,
 *::after,
@@ -35,7 +37,8 @@ picture {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  // font-family: $cereal-light;
   background-color: $app-background;
   overflow: hidden;
   color: $text-grey;
@@ -79,4 +82,8 @@ ol {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  @include vp-mobile-only {
+    padding-bottom: $mobile-nav-height;
+  }
 }

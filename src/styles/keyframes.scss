@@ -1,13 +1,42 @@
 @keyframes modalFadeIn {
   0% {
-    transform: scale(0.5);
+    transform: scale(0.7);
     opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
   }
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+/**
+* Visibility
+*/
+@keyframes visibilityHidden {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes visibilityVisible {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
   }
 }

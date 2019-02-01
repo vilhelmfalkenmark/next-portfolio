@@ -9,14 +9,32 @@
   width: 100%;
 }
 
+.tiltContainer {
+  background-color: $white;
+  height: 30px;
+
+  &_isStartPage {
+    background: #25689e;
+    // background: #1b68a1;
+  }
+
+  @include breakpoint($lg) {
+    height: 60px;
+  }
+}
+
 .tilt {
-  height: 60px;
+  height: 30px;
   width: 100%;
-  background-color: $app-background;
+  // background-color: red;
   position: absolute;
   left: 0;
   right: 0;
   fill: $grey1;
+
+  @include breakpoint($lg) {
+    height: 60px;
+  }
 }
 
 .content {
@@ -57,9 +75,13 @@
 
 .image {
   width: 100%;
-  max-width: 200px;
+  max-width: 120px;
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 50%;
+
+  @include breakpoint($md) {
+    max-width: 180px;
+  }
 }

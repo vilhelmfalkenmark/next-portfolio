@@ -15,9 +15,12 @@ const s = classNames.bind(styles);
 
 const ProjectModal = ({ project, isOpen, closeProjectModal }) => {
   return (
-    <ModalBase onCloseCallback={closeProjectModal} isOpen={isOpen}>
+    <ModalBase
+      onCloseCallback={closeProjectModal}
+      isOpen={isOpen}
+      title={project.title}
+    >
       <article className={s('container')}>
-        <h2 className={s('heading')}>{project.title}</h2>
         <picture className={s('imageContainer')}>
           <img
             data-src={`${project.imageUrl}?w=800`}

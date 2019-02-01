@@ -1,9 +1,10 @@
 const withSass = require('@zeit/next-sass');
 const path = require('path');
+const withFonts = require('next-fonts');
 
 const CLIENT_PATH = path.join(__dirname, 'src');
 
-module.exports = {
+module.exports = withFonts({
   useFileSystemPublicRoutes: false,
   ...withSass({
     cssModules: true,
@@ -25,4 +26,4 @@ module.exports = {
       return config;
     }
   })
-};
+});

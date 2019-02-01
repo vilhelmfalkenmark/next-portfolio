@@ -1,13 +1,20 @@
+import { withRouter } from 'next/router';
 import classNames from 'classnames/bind';
 import Tilt from 'components/layout/Tilt/Tilt';
+import PropTypes from 'prop-types';
 
 import styles from './Footer.scss';
 
 const s = classNames.bind(styles);
 
-const Footer = () => (
+const Footer = ({ router }) => (
   <footer className={s({ container: true })} name="footer">
-    <Tilt className={s('tilt')} />
+    <Tilt
+      svgClassName={s('tilt')}
+      className={s('tiltContainer', {
+        tiltContainer_isStartPage: router.asPath === '/'
+      })}
+    />
     <article className={s('content')}>
       <div className={s('row')}>
         <div
@@ -16,7 +23,6 @@ const Footer = () => (
           })}
         >
           <ul>
-            <li>Tel: 0705580198</li>
             <li>Mail: vilhelmfalkenmark@gmail.com</li>
           </ul>
         </div>
@@ -44,4 +50,10 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer;
+Footer.propTypes = {
+  router: PropTypes.shape({
+    pathname: PropTypes.string
+  })
+};
+
+export default withRouter(Footer);

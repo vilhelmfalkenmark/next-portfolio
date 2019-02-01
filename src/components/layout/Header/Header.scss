@@ -3,7 +3,7 @@
 @import '~styles/mixins';
 
 .container {
-  @include breakpoint($lg) {
+  @include vp-tablet-up {
     background-color: $white;
     box-shadow: $box-shadow;
     top: 0;
@@ -17,41 +17,60 @@
 .content {
   @include content();
 
+  position: relative;
   display: flex;
   align-items: center;
 
-  @include breakpoint(1px, $lg - 1) {
-    flex-direction: column-reverse;
-    justify-content: center;
+  @include vp-mobile-only {
+    justify-content: space-evenly;
+    align-items: center;
   }
-  @include breakpoint($lg) {
+
+  @include vp-tablet-up {
     height: $header-height;
     justify-content: space-between;
   }
 }
 
-.logoLink {
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
+/**
+* MY FACE
+*/
+.logoContainer {
+  width: 100%;
   display: flex;
+  align-items: center;
 
-  @include breakpoint(1px, $lg - 1) {
-    height: $header-mobile-height;
-    box-shadow: $box-shadow;
-    background: $white;
-    width: 100%;
-    padding: $half-base-margin;
-    z-index: $z-index-three;
-    top: 0;
-    left: 0;
+  @include vp-mobile-only {
+    display: none;
+  }
+
+  @include vp-tablet-up {
+    height: $header-height;
   }
 }
 
+.logo {
+  margin: 0.5rem 0;
+  cursor: pointer;
+  height: 5rem;
+  width: auto;
+}
+
+.mobileHeader {
+  @include absolute-center;
+
+  @include vp-tablet-up {
+    display: none;
+  }
+}
+
+/**
+* NAVIGATION
+*/
 .navigation {
   display: flex;
 
-  @include breakpoint(1px, $lg) {
+  @include vp-mobile-only {
     box-shadow: $box-shadow;
     position: fixed;
     bottom: 0;
@@ -76,7 +95,7 @@
   display: flex;
   justify-content: center;
 
-  @include breakpoint($lg) {
+  @include breakpoint($md) {
     padding: 0 1rem;
   }
 }
@@ -85,45 +104,35 @@
   text-decoration: none;
 
   font-size: $font-size-m;
-  min-width: $two-base-margin;
+  min-width: $four-base-margin;
   flex: 1;
   display: flex;
-  padding: $half-base-margin;
+  padding: $base-margin;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: $text-grey;
   font-weight: 700;
   position: relative;
-  height: $header-mobile-height;
+  height: $mobile-nav-height;
   border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
-
-  @include breakpoint($lg) {
-    flex-direction: row;
-    justify-content: center;
-    height: $header-height;
-  }
+  font-size: $font-size-s;
 
   &_isActive {
     color: $link-color;
     border-bottom: 3px solid $link-color;
   }
-}
 
-.linkTitle {
-  font-size: 0.8rem;
-  line-height: 1rem;
+  @include vp-tablet-up {
+    flex-direction: row;
+    justify-content: center;
+    height: $header-height;
+    min-width: 100px;
 
-  @include breakpoint($lg) {
-    font-size: 1rem;
-    display: inline-block;
-    margin-left: 0.5rem;
+    &:hover {
+      background: $link-color;
+      color: $white;
+    }
   }
-}
-
-.logo {
-  cursor: pointer;
-  height: 5rem;
-  width: 5rem;
 }

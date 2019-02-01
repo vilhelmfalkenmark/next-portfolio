@@ -10,7 +10,7 @@ $grey6: #323237;
 $grey7: #111111;
 
 // Colors
-$text-grey: #535353;
+$text-grey: #676d79;
 $light-grey: #d4d4d4;
 $medium-grey: #737373;
 $turquoise: #00a6bf;
@@ -21,10 +21,17 @@ $orange: #ff9959;
 $off-white: #917070;
 
 /* Shadow */
-$box-shadow: -1px -4px 15px 0 rgba(0, 0, 0, 0.58);
+$box-shadow: -1px 0 10px 0 rgba(30, 30, 30, 0.58);
 
 /* Transparent white */
 $transparent-white: rgba(255, 255, 255, 0.808);
+$gradient-orange: linear-gradient(270deg, #de6262, #ff9959);
+$gradient-background: linear-gradient(
+  0deg,
+  #25689e 20%,
+  #466d68 40%,
+  #000e3c 70%
+);
 
 /* Component and application colors */
 $app-background: white;
