@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { fetchSkills } from 'store/skills/skillsActions';
-import EntryPoint from 'hocs/EntryPoint';
 import styles from './SkillsPage.scss';
 
 const s = classNames.bind(styles);
@@ -22,6 +21,7 @@ class SkillsPage extends React.Component {
     if (fetching) {
       return <p>Hämtar data!</p>;
     }
+
     if (fulfilled && data.length) {
       return (
         <ul>
@@ -62,4 +62,4 @@ SkillsPage.propTypes = {
   })
 };
 
-export default EntryPoint(connect(mapStateToProps)(SkillsPage));
+export default connect(mapStateToProps)(SkillsPage);

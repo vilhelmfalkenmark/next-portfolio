@@ -13,7 +13,9 @@ const Header = ({ router }) => (
   <header className={s({ container: true })} name="header">
     <menu className={s({ content: true })}>
       <Link route={'/'}>
-        <img src={'/static/svg/ville.svg'} className={s('logo')} />
+        <picture className={s('logoContainer')}>
+          <img src={'/static/svg/ville.svg'} className={s('logo')} />
+        </picture>
       </Link>
       <nav className={s({ navigation: true })}>
         <ul className={s({ list: true })}>

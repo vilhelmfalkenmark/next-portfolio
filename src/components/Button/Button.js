@@ -3,6 +3,7 @@ import { Link } from 'router/routes';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import SolidSpinner from 'components/Loading/SolidSpinner';
+// import ButtonBase from '@material-ui/core/ButtonBase';
 
 import {
   BUTTON_COLOR_PRIMARY,
@@ -26,7 +27,7 @@ const Button = ({
   icon,
   iconLeft,
   className,
-  // iconClassName,
+  // ,
   onClickCallback,
   loading
 }) => {

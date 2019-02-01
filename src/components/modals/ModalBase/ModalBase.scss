@@ -12,10 +12,19 @@
   height: 100%;
   width: 100%;
   overflow-y: scroll;
-  z-index: $z-index-two;
+  z-index: $z-index-three;
+  display: none;
+
+  &_hasBeenOpened {
+    display: block;
+  }
+
+  &_isOpen {
+    animation: visibilityVisible 0s ease forwards;
+  }
 
   &_isClosed {
-    display: none;
+    animation: visibilityHidden 300ms ease forwards;
   }
 }
 
@@ -25,15 +34,21 @@
   right: 0;
   bottom: 0;
   top: 0;
+  opacity: 0;
   margin: 0 auto;
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  transition: opacity 200ms ease;
   padding: 0;
   border: none;
   outline: 0;
   background: $grey-modal-overlay;
   z-index: $z-index-two;
+
+  &_isOpen {
+    opacity: 1;
+  }
 }
 
 .inner {
@@ -52,30 +67,64 @@
   right: 0;
   background: $white;
   max-width: $page-max-width;
-  margin: calc(#{$two-base-margin} + #{$header-height}) auto $three-base-margin;
+  margin: 0 auto;
   z-index: $z-index-three;
-  padding: $base-margin;
+  padding: 0 $two-base-margin $two-base-margin;
+
+  @include vp-mobile-only {
+    min-height: 100vh;
+  }
 
   @include breakpoint(768px) {
-    padding: $two-base-margin;
+    padding: 0 $three-base-margin $three-base-margin $three-base-margin;
+    margin: $three-base-margin;
   }
 
   &_isOpen {
-    animation: modalFadeIn 0.2s;
+    animation: modalFadeIn 200ms ease forwards;
+  }
+
+  &_isClosed {
+    animation: modalFadeOut 200ms ease forwards;
   }
 }
 
+.headingContainer {
+  height: 6rem;
+  z-index: $z-index-three;
+  position: sticky;
+  top: 0;
+  background: $white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 0 $two-base-margin;
+  border-bottom: 0.1rem solid $grey1;
+}
+
+.heading {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  right: 0;
+  margin: 0;
+  transform: translate(0%, -50%);
+}
+
 .closeButton {
+  cursor: pointer;
+  outline: none;
   appearance: none;
   z-index: $z-index-one;
-  position: absolute;
   padding: 0;
-  background: transparent;
+  background: $grey1;
+  border-radius: 50%;
   border: none;
   top: $base-margin;
   right: $base-margin;
-  height: $five-base-margin;
-  width: $five-base-margin;
+  height: 4rem;
+  width: 4rem;
 }
 
 .cross {

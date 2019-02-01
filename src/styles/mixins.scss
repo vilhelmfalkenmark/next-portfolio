@@ -17,6 +17,18 @@
   }
 }
 
+@mixin vp-mobile-only() {
+  @include breakpoint(1px, 767px) {
+    @content;
+  }
+}
+
+@mixin vp-tablet-up() {
+  @include breakpoint(768px) {
+    @content;
+  }
+}
+
 //////////////////////////////////////////////////
 /**
 * Flex grid
@@ -69,22 +81,22 @@
   margin: 0 auto;
   width: 100%;
   max-width: $page-max-width;
-  padding: 0 $half-base-margin;
+  padding: 0 $two-base-margin;
 }
 
 @mixin entrypoint() {
-  padding-top: $header-mobile-height;
   flex: 1 0 auto;
 
-  @include breakpoint($lg) {
+  @include breakpoint($md) {
     padding-top: $header-height;
   }
 }
 
 @mixin page-heading() {
   text-align: center;
-  font-size: $font-size-xxxl;
-  padding: 2rem;
+  font-size: $font-size-xl;
+  padding: $three-base-margin $two-base-margin $two-base-margin;
+  margin: 0 0 $two-base-margin;
   position: relative;
 
   &:after {
@@ -93,10 +105,15 @@
     height: 0.3rem;
     background: $text-grey;
     position: absolute;
-    bottom: -1rem;
     margin: 0 auto;
     left: 0;
     right: 0;
+    bottom: 0;
+  }
+
+  @include breakpoint($md) {
+    font-size: $font-size-xxxl;
+    // padding: 0 $two-base-margin $two-base-margin;
   }
 }
 

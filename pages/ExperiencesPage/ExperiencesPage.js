@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { fetchExperiences } from 'store/experiences/experiencesActions';
-import EntryPoint from 'hocs/EntryPoint';
 import styles from './ExperiencesPage.scss';
 
 const s = classNames.bind(styles);
@@ -43,9 +42,7 @@ ExperiencesPage.propTypes = {
   openProjectModal: PropTypes.func
 };
 
-export default EntryPoint(
-  connect(
-    mapStateToProps
-    // mapDispatchToProps
-  )(ExperiencesPage)
-);
+export default connect(
+  mapStateToProps
+  // mapDispatchToProps
+)(ExperiencesPage);

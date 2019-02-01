@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import classNames from 'classnames/bind';
-import EntryPoint from 'hocs/EntryPoint';
 import Particles from 'react-particles-js';
 import styles from './StartPage.scss';
 
@@ -17,11 +16,19 @@ class StartPage extends React.Component {
     return (
       <main className={s('container')}>
         <section className={s('hero')}>
-          <h1 className={s('name')}>Vilhelm Falkenmark</h1>
+          <h1 className={s('name')}>Vilhelm Falkenmark 🚀</h1>
           <div className={s('particles')}>
             <Particles
               params={{
                 particles: {
+                  number: {
+                    value: 10
+                  },
+                  move: {
+                    speed: 2,
+                    direction: 'top',
+                    bounce: false
+                  },
                   line_linked: {
                     shadow: {
                       enable: true,
@@ -47,4 +54,4 @@ class StartPage extends React.Component {
   }
 }
 
-export default withRouter(EntryPoint(StartPage));
+export default withRouter(StartPage);
