@@ -6,7 +6,8 @@ import { map, path } from 'ramda';
 const cleanSkill = item => ({
   id: path(['sys', 'id'], item),
   title: path(['fields', 'title'], item),
-  level: path(['fields', 'level'], item)
+  level: path(['fields', 'level'], item),
+  imageUrl: path(['fields', 'logo', 'fields', 'file', 'url'], item)
 });
 
 /**

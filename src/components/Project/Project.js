@@ -7,11 +7,12 @@ import {
 } from 'utils/constants/buttonTypes';
 import { truncateText } from 'utils/helpers/strings';
 import Button from 'components/Button/Button';
+import SkeletonText from 'components/Loading/SkeletonText/SkeletonText';
 import styles from './Project.scss';
 
 const s = classNames.bind(styles);
 
-const Project = ({ project, even, openProjectModal }) => {
+const Project = ({ project, even, openProjectModal, skeleton }) => {
   return (
     <li className={s('container')}>
       {/* INFORMATION COLUMN */}
@@ -20,10 +21,21 @@ const Project = ({ project, even, openProjectModal }) => {
           column_info: true
         })}
       >
-        <h4> {project.title}</h4>
-        <p>{truncateText({ maxLength: 300, text: project.content })}</p>
+        <h3
+          className={s('heading', {
+            heading_skeleton: skeleton
+          })}
+        >
+          {project.title || ' '}
+        </h3>
+        {skeleton ? (
+          <SkeletonText rows={4} />
+        ) : (
+          <p>{truncateText({ maxLength: 300, text: project.content })}</p>
+        )}
         <div className={s('buttonContainer')}>
           <Button
+            skeleton={skeleton}
             onClickCallback={() => openProjectModal(project)}
             color={BUTTON_COLOR_PRIMARY}
             text={'Läs mer'}
@@ -37,6 +49,13 @@ const Project = ({ project, even, openProjectModal }) => {
           column_image: true
         })}
       >
+        <h3
+          className={s('mobileHeading', {
+            mobileHeading_skeleton: skeleton
+          })}
+        >
+          {project.title || ' '}
+        </h3>
         <picture
           className={s('picture', {
             picture_even: even
@@ -63,6 +82,7 @@ const Project = ({ project, even, openProjectModal }) => {
 Project.propTypes = {
   project: PropTypes.shape({}),
   even: PropTypes.bool,
+  skeleton: PropTypes.bool,
   openProjectModal: PropTypes.func
 };
 

@@ -1,0 +1,14 @@
+@import '~styles/variables';
+@import '~styles/colors';
+
+.container {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.item {
+  height: 2rem;
+  width: 100%;
+  margin-bottom: 1.6rem;
+  background: $skeleton-grey;
+}

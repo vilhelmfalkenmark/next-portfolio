@@ -27,6 +27,7 @@ const Button = ({
   icon,
   iconLeft,
   className,
+  skeleton,
   // ,
   onClickCallback,
   loading
@@ -42,6 +43,7 @@ const Button = ({
     container_secondary: color === BUTTON_COLOR_SECONDARY,
     container_secondary_solid: color === BUTTON_COLOR_SECONDARY && !outlined,
     container_secondary_outlined: color === BUTTON_COLOR_SECONDARY && outlined,
+    container_skeleton: skeleton,
 
     // Sizes
     container_small: size === BUTTON_SIZE_SMALL,
@@ -152,7 +154,8 @@ Button.propTypes = {
   InjectedNavLink: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   href: PropTypes.string,
   internalHref: PropTypes.string,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  skeleton: PropTypes.bool
 };
 
 export default Button;

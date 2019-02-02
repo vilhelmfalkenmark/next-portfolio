@@ -24,30 +24,36 @@
   }
 
   &_isClosed {
-    animation: visibilityHidden 300ms ease forwards;
+    animation: visibilityHidden 400ms ease forwards;
   }
 }
 
 .closeOverlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  opacity: 0;
-  margin: 0 auto;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-  transition: opacity 200ms ease;
-  padding: 0;
-  border: none;
-  outline: 0;
-  background: $grey-modal-overlay;
-  z-index: $z-index-two;
+  @include vp-mobile-only {
+    display: none;
+  }
 
-  &_isOpen {
-    opacity: 1;
+  @include vp-tablet-up {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    margin: 0 auto;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    transition: opacity 200ms ease;
+    padding: 0;
+    border: none;
+    outline: 0;
+    background: $grey-modal-overlay;
+    z-index: $z-index-two;
+
+    &_isOpen {
+      opacity: 1;
+    }
   }
 }
 
@@ -70,22 +76,35 @@
   margin: 0 auto;
   z-index: $z-index-three;
   padding: 0 $two-base-margin $two-base-margin;
-
-  @include vp-mobile-only {
-    min-height: 100vh;
-  }
-
-  @include breakpoint(768px) {
-    padding: 0 $three-base-margin $three-base-margin $three-base-margin;
-    margin: $three-base-margin;
-  }
+  animation-timing-function: ease;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
 
   &_isOpen {
-    animation: modalFadeIn 200ms ease forwards;
+    animation-duration: 200ms;
+    animation-name: modalFadeIn;
   }
 
   &_isClosed {
-    animation: modalFadeOut 200ms ease forwards;
+    animation-duration: 200ms;
+    animation-name: modalFadeOut;
+  }
+
+  @include vp-mobile-only {
+    min-height: 100vh;
+
+    &_isOpen {
+      animation-duration: 350ms;
+    }
+
+    &_isClosed {
+      animation-duration: 350ms;
+    }
+  }
+
+  @include vp-tablet-up {
+    padding: 0 $three-base-margin $three-base-margin $three-base-margin;
+    margin: $three-base-margin;
   }
 }
 

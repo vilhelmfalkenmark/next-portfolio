@@ -8,8 +8,12 @@
 
 .hero {
   width: 100%;
-  height: calc(100vh - #{$header-height});
+  height: calc(100vh - #{$mobile-nav-height});
   position: relative;
+
+  @include breakpoint($md) {
+    height: calc(100vh - #{$header-height});
+  }
 }
 
 .name {
