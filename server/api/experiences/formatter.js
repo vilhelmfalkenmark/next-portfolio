@@ -12,19 +12,22 @@ export const pluckImageUrl = imageObject =>
 const cleanExperiences = item => ({
   id: path(['sys', 'id'], item),
   title: path(['fields', 'title'], item),
-  description: path(['fields', 'content'], item),
-  startDate: path(['fields', 'content'], item),
-  endDate: path(['fields', 'content'], item),
-  imageUrl: path(['fields', 'image', 'fields', 'file', 'url'], item)
+  description: view(
+    lensPath(['fields', 'description', 'content', 0, 'content', 0, 'value']),
+    item
+  ),
+  startDate: path(['fields', 'startDate'], item),
+  endDate: path(['fields', 'endDate'], item),
+  logoUrl: path(['fields', 'logo', 'fields', 'file', 'url'], item) || 'HEJ!'
 });
 
 /**
  * @function experiencesApiResponse
  */
 export const experiencesApiResponse = entry => {
-  // return entry;
-
-  return map(item => cleanExperiences(item), path(['items'], entry));
+  return map(item => cleanExperiences(item), path(['items'], entry)).sort(
+    (a, b) => new Date(b.endDate) - new Date(a.endDate)
+  );
 };
 
 export default pluckImageUrl;

@@ -15,7 +15,7 @@ const iS = {
 const experiences = (state = iS, action) => {
   switch (action.type) {
     case EXPERIENCES_FETCHING: {
-      return { ...state, fetching: false };
+      return { ...state, fetching: true };
     }
     case EXPERIENCES_FULFILLED: {
       return {

@@ -44,6 +44,10 @@ class PortfolioApp extends App {
     return '';
   }
 
+  componentDidUpdate() {
+    document.getElementById('__next').scrollTo(0, 0);
+  }
+
   render() {
     const { Component, reduxStore } = this.props;
 

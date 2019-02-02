@@ -15,7 +15,6 @@ export default contentful => {
         .getEntries({
           content_type: 'experience'
         })
-        .then(entry => console.log(entry) || entry)
         .then(entry => experiencesApiResponse(entry))
         .catch(err => {
           console.error(err); // eslint-disable-line

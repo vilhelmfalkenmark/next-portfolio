@@ -31,18 +31,9 @@ class ProjectsPage extends React.Component {
   getMarkup() {
     const { projects, openProjectModal } = this.props;
 
-    if (projects.fetching) {
-      const r = [...Array(3).keys()];
-
-      return (
-        <ul className={s({ list: true })}>
-          {r.map((project, index) => (
-            <Project skeleton key={index} project={{}} even={index % 2 === 0} />
-          ))}
-        </ul>
-      );
-    }
-
+    /**
+     * FULFILLED
+     */
     if (projects.fulfilled && isArrayWithContent(projects.data)) {
       return (
         <ul className={s({ list: true })}>
@@ -56,10 +47,26 @@ class ProjectsPage extends React.Component {
           ))}
         </ul>
       );
-    } else if (projects.rejected) {
+    }
+
+    /**
+     * REJECTED
+     */
+    if (projects.rejected) {
       return <p>Error!</p>;
     }
-    return <p>Laddar data!</p>;
+
+    /**
+     * FETCHING
+     */
+    const r = [...Array(3).keys()];
+    return (
+      <ul className={s({ list: true })}>
+        {r.map((project, index) => (
+          <Project skeleton key={index} project={{}} even={index % 2 === 0} />
+        ))}
+      </ul>
+    );
   }
 
   render() {
