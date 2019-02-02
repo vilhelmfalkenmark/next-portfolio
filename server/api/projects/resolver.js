@@ -15,7 +15,6 @@ export default contentful => {
         .getEntries({
           content_type: 'projects'
         })
-        .then(entry => entry)
         .then(entry => projectsApiResponse(entry))
         .catch(err => {
           console.error(err); // eslint-disable-line

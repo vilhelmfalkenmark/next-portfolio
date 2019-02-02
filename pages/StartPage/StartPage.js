@@ -7,8 +7,7 @@ import styles from './StartPage.scss';
 const s = classNames.bind(styles);
 
 class StartPage extends React.Component {
-  // eslint-disable-next-line
-  static getInitialProps({ reduxStore, req }) {
+  static getInitialProps() {
     return {};
   }
 

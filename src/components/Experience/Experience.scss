@@ -1,0 +1,41 @@
+@import '~styles/variables';
+@import '~styles/colors';
+
+.container {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 0.1rem solid $grey2;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.left {
+  flex-basis: 180px;
+  text-align: center;
+  margin-right: $four-base-margin;
+}
+
+.logo {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 130px;
+}
+
+.right {
+  // flex: 1;
+}
+
+.heading {
+  margin: 0 0 $two-base-margin;
+}
+
+.content {
+  max-width: $text-width;
+}

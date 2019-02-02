@@ -95,7 +95,7 @@
 @mixin page-heading() {
   text-align: center;
   font-size: $font-size-xl;
-  padding: $three-base-margin $two-base-margin $two-base-margin;
+  padding: $five-base-margin $two-base-margin $two-base-margin;
   margin: 0 0 $two-base-margin;
   position: relative;
 
@@ -113,7 +113,6 @@
 
   @include breakpoint($md) {
     font-size: $font-size-xxxl;
-    // padding: 0 $two-base-margin $two-base-margin;
   }
 }
 

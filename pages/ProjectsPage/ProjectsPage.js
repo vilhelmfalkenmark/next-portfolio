@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-
+import { path } from 'ramda';
+import { isArrayWithContent } from 'utils/helpers/arrays';
 import {
   fetchProjects,
   openProjectModal
@@ -14,17 +15,26 @@ import styles from './ProjectsPage.scss';
 const s = classNames.bind(styles);
 
 class ProjectsPage extends React.Component {
-  static async getInitialProps({ reduxStore }) {
-    if (reduxStore.getState().projects.fulfilled === false) {
+  static async getInitialProps({ reduxStore, req }) {
+    if (req) {
       return (await reduxStore.dispatch(fetchProjects())) || {};
     }
     return {};
   }
 
+  componentDidMount() {
+    if (this.props.projects.fulfilled === false) {
+      this.props.fetchProjects();
+    }
+  }
+
   getMarkup() {
     const { projects, openProjectModal } = this.props;
 
-    if (projects.fulfilled && projects.data.length > 0) {
+    /**
+     * FULFILLED
+     */
+    if (projects.fulfilled && isArrayWithContent(projects.data)) {
       return (
         <ul className={s({ list: true })}>
           {projects.data.map((project, index) => (
@@ -37,10 +47,26 @@ class ProjectsPage extends React.Component {
           ))}
         </ul>
       );
-    } else if (projects.rejected) {
+    }
+
+    /**
+     * REJECTED
+     */
+    if (projects.rejected) {
       return <p>Error!</p>;
     }
-    return <p>Laddar data!</p>;
+
+    /**
+     * FETCHING
+     */
+    const r = [...Array(3).keys()];
+    return (
+      <ul className={s({ list: true })}>
+        {r.map((project, index) => (
+          <Project skeleton key={index} project={{}} even={index % 2 === 0} />
+        ))}
+      </ul>
+    );
   }
 
   render() {
@@ -50,7 +76,9 @@ class ProjectsPage extends React.Component {
           <h1 className={s('heading')}>Alla projekt</h1>
           {this.getMarkup()}
         </article>
-        <ProjectModal key={this.props.projects.modalProject.id} />
+        <ProjectModal
+          key={path(['projects', 'modalProject', 'id'], this.props)}
+        />
       </main>
     );
   }
@@ -63,6 +91,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   openProjectModal: project => {
     dispatch(openProjectModal(project));
+  },
+  fetchProjects: () => {
+    dispatch(fetchProjects());
   }
 });
 
@@ -76,7 +107,8 @@ ProjectsPage.propTypes = {
       id: PropTypes.string
     })
   }),
-  openProjectModal: PropTypes.func
+  openProjectModal: PropTypes.func,
+  fetchProjects: PropTypes.func
 };
 
 export default connect(

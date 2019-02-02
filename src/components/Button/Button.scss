@@ -116,6 +116,13 @@
     pointer-events: none;
     position: relative;
   }
+
+  &_skeleton {
+    pointer-events: none;
+    background: $skeleton-grey !important;
+    border-color: $skeleton-grey !important;
+    color: $skeleton-grey !important;
+  }
 }
 
 .inner {

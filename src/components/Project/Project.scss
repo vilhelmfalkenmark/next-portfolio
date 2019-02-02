@@ -1,18 +1,27 @@
 @import '~styles/variables';
+@import '~styles/colors';
 @import '~styles/mixins';
 
 .container {
   @include flex-row;
 
-  margin-bottom: $three-base-margin;
   justify-content: center;
+  border-bottom: 0.1rem solid $grey2;
+  padding-bottom: $three-base-margin;
 
   @include breakpoint(900px) {
+    padding-bottom: 0;
+    border-bottom: none;
     justify-content: space-between;
+    margin-bottom: $five-base-margin;
   }
 
   &:nth-of-type(even) {
     flex-direction: row-reverse;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
   }
 }
 
@@ -32,6 +41,29 @@
 
   @include breakpoint(900px) {
     @include flex-gtr-col(2, $base-margin);
+  }
+}
+
+.heading {
+  display: none;
+
+  &_skeleton {
+    height: $two-base-margin;
+    width: 20rem;
+    background: $skeleton-grey;
+  }
+
+  @include breakpoint(900px) {
+    display: block;
+  }
+}
+
+.mobileHeading {
+  text-align: center;
+  margin: $two-base-margin 0 $three-base-margin;
+
+  @include breakpoint(900px) {
+    display: none;
   }
 }
 

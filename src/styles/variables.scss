@@ -9,11 +9,11 @@ $xxxl: 2000px;
 /* Default sizes */
 $half-base-margin: 0.5rem;
 $base-margin: 1rem;
-$two-base-margin: calc(#{$base-margin} * 2);
-$three-base-margin: calc(#{$base-margin} * 3);
-$four-base-margin: calc(#{$base-margin} * 4);
-$five-base-margin: calc(#{$base-margin} * 5);
-$six-base-margin: calc(#{$base-margin} * 6);
+$two-base-margin: 2rem;
+$three-base-margin: 3rem;
+$four-base-margin: 4rem;
+$five-base-margin: 5rem;
+$six-base-margin: 6rem;
 
 /* Layut sizes */
 $mobile-header-height: 6rem; // My face

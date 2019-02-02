@@ -8,11 +8,18 @@ import styles from './SkillsPage.scss';
 const s = classNames.bind(styles);
 
 class SkillsPage extends React.Component {
-  static async getInitialProps({ reduxStore }) {
-    if (reduxStore.getState().skills.fulfilled === false) {
+  static async getInitialProps({ reduxStore, req }) {
+    if (req) {
       return (await reduxStore.dispatch(fetchSkills())) || {};
     }
+
     return {};
+  }
+
+  componentDidMount() {
+    if (this.props.skills.fulfilled === false) {
+      this.props.fetchSkills();
+    }
   }
 
   getMarkup() {
@@ -27,6 +34,7 @@ class SkillsPage extends React.Component {
         <ul>
           {data.map(skill => (
             <li key={skill.id} className={s('skill')}>
+              <img src={skill.imageUrl} />
               {skill.title}
             </li>
           ))}
@@ -53,13 +61,23 @@ const mapStateToProps = state => ({
   skills: state.skills
 });
 
+const mapDispatchToProps = dispatch => ({
+  fetchSkills: () => {
+    dispatch(fetchSkills());
+  }
+});
+
 SkillsPage.propTypes = {
   skills: PropTypes.shape({
     fetching: PropTypes.bool,
     rejected: PropTypes.bool,
     fulfilled: PropTypes.bool,
     data: PropTypes.arrayOf(PropTypes.shape())
-  })
+  }),
+  fetchSkills: PropTypes.func
 };
 
-export default connect(mapStateToProps)(SkillsPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SkillsPage);
